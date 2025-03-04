@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import { ConversationType } from "@/types";
+import { ConversationType, IUser } from "@/types";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { router } from "expo-router";
@@ -16,6 +16,9 @@ const ConversationCard = ({ conv }: Props) => {
   const { user } = useSelector((state: RootState) => state.auth);
   const lastMsg = conv.messages[conv.messages.length - 1].content ?? "";
   const msgTime = conv.messages[conv.messages.length - 1].createdAt ?? "";
+  const otherUser = conv?.participants.find(
+    (u) => u._id.toString() !== user?._id
+  );
   return (
     <TouchableOpacity
       onPress={() =>
@@ -25,16 +28,14 @@ const ConversationCard = ({ conv }: Props) => {
       <View>
         <Image
           source={{
-            uri: conv?.participants[1].avatar?.url,
+            uri: otherUser?.avatar?.url,
           }}
           className="w-12 h-12 shadow-md shadow-black rounded-full"
           resizeMode="contain"
         />
       </View>
       <View>
-        <Text className="text-lg font-semibold">
-          {conv?.participants[1].first_name}
-        </Text>
+        <Text className="text-lg font-semibold">{otherUser?.first_name}</Text>
 
         <Text numberOfLines={2} className="w-[60%] text-Gray">
           {lastMsg ?? ""}

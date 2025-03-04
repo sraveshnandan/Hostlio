@@ -42,6 +42,10 @@ const ConversationScreen = (props: Props) => {
     (c) => c._id.toString() === cId.toString()
   );
 
+  const otherUser = participantConv?.participants.find(
+    (u) => u._id.toString() !== user?._id
+  );
+
   const fetchAllMessages = async () => {
     try {
       setLoading(true);
@@ -58,7 +62,9 @@ const ConversationScreen = (props: Props) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      tabBarStyle: { display: "none" },
+      headerStyle: {
+        backgroundColor: Colors.Primary,
+      },
       headerTitle: "",
       headerLeft: () => (
         <View className="flex-row items-center space-x-4">
@@ -70,11 +76,11 @@ const ConversationScreen = (props: Props) => {
           />
           <View className="flex-row items-center space-x-3">
             <Image
-              source={{ uri: participantConv?.participants[1].avatar?.url }}
+              source={{ uri: otherUser?.avatar?.url }}
               className="w-10 h-10 rounded-full"
             />
             <Text className="text-white text-lg font-semibold">
-              {participantConv?.participants[1].first_name}
+              {otherUser?.first_name}
             </Text>
           </View>
         </View>
@@ -152,7 +158,7 @@ const ConversationScreen = (props: Props) => {
                 {!isMe && (
                   <Image
                     source={{
-                      uri: participantConv?.participants[1].avatar?.url,
+                      uri: otherUser?.avatar?.url,
                     }}
                     className="w-8 h-8 rounded-full mr-2"
                   />

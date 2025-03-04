@@ -38,7 +38,7 @@ const RenderItem: React.FC<{ item: SliderItem }> = ({ item }) => (
 
 const HomeScreen: React.FC = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, marginVertical: 15 }}>
       <HorizontalSlider
         data={homeSlider}
         renderItem={({ item }) => <RenderItem item={item} />}
@@ -53,12 +53,13 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   slide: {
-    width: wp(100),
+    width: wp(95),
     height: hp(20),
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
     overflow: "hidden",
+    resizeMode: "cover",
     position: "relative",
     marginTop: 10,
   },

@@ -31,6 +31,9 @@ const ChatScreen = () => {
   const { socket } = useSocket();
 
   const fetchAllConversations = async () => {
+    if (user?._id) {
+      return;
+    }
     const payload = { userId: user?._id };
     const res = await GetAllConversation(payload);
     if (!res?.success) {

@@ -89,15 +89,15 @@ export default HorizontalSlider;
 const styles = StyleSheet.create({
   container: {
     position: "relative",
-    width: "100%",
-    height: hp(20),
+    width: "auto",
+    height: hp(25),
     overflow: "hidden",
     borderRadius: 12,
   },
   pagination: {
     flexDirection: "row",
     position: "absolute",
-    bottom: 10,
+    bottom: 5,
     alignSelf: "center",
   },
   dot: {

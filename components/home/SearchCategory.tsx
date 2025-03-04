@@ -22,18 +22,19 @@ export default function SearchCategory({ categories }: Props) {
       {categories.map((item, index) => (
         <Animated.View
           key={item._id}
+          className={`items-center bg-White p-3 rounded-lg shadow-md shadow-black/40 justify-center mx-3  space-y-1`}
           entering={SlideInUp.delay(index * 100).damping(15)}>
           <TouchableOpacity
             onPress={() => handleOnClick(item._id)}
-            className="mx-1 border-2 shadow-lg shadow-black/60 border-Primary/60 rounded-full items-center w-20 h-20 p-1 justify-center">
+            className="border-2  border-Primary/60 rounded-full items-center w-24 h-24 p-1 justify-center">
             <Image
               source={{ uri: item.image.url }}
               className="object-cover aspect-square absolute rounded-full mb-2 w-full h-full"
             />
-            <Text className="text-white bg-Primary/70 px-3 py-1 rounded-md shadow-md shadow-black font-semibold text-sm">
-              {item.name}
-            </Text>
           </TouchableOpacity>
+          <Text className="text-Secondry capitalize  font-semibold text-lg">
+            {item.name}
+          </Text>
         </Animated.View>
       ))}
     </ScrollView>
