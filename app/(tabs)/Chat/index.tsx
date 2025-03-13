@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { Button, UnAuthErrBox } from "@/components";
+import { UnAuthErrBox } from "@/components";
 import { useSocket } from "@/providers";
 import { GetAllConversation } from "@/utils/chat.utils";
 import { setAllConversation } from "@/redux/reducers/chat.reducers";
@@ -82,7 +82,8 @@ const ChatScreen = () => {
           contentContainerStyle={{
             justifyContent: "center",
             gap: 12,
-          }}>
+          }}
+        >
           {conversations.map((item) => (
             <ConversationCard key={item?._id} conv={item} />
           ))}
@@ -91,7 +92,8 @@ const ChatScreen = () => {
         <View className="flex-1 items-center justify-center">
           <Animated.View
             className={`bg-white p-3 w-[80%] items-center justify-center  rounded-lg`}
-            entering={FadeInDown.delay(200).springify()}>
+            entering={FadeInDown.delay(200).springify()}
+          >
             <Ionicons
               name="chatbubbles-outline"
               size={68}
@@ -104,7 +106,8 @@ const ChatScreen = () => {
 
             <TouchableOpacity
               onPress={() => router.navigate(`/(tabs)/Search/`)}
-              className="bg-Primary items-center justify-center px-4 shadow-lg shadow-black py-3 rounded-full mt-4">
+              className="bg-Primary items-center justify-center px-4 shadow-lg shadow-black py-3 rounded-full mt-4"
+            >
               <Text className="text-white font-semibold">Explore Listings</Text>
             </TouchableOpacity>
           </Animated.View>

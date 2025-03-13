@@ -9,8 +9,7 @@ interface SocketContextType {
 // Create a context
 const SocketContext = createContext<SocketContextType | undefined>(undefined);
 
-// Your backend server URL (Update with your actual WebSocket backend URL)
-const SOCKET_SERVER_URL = "http://192.168.168.59:5000";
+const SOCKET_SERVER_URL = process.env.EXPO_PUBLIC_CHAT_API! || "";
 
 export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
