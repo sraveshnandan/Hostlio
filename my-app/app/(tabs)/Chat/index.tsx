@@ -10,7 +10,6 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { UnAuthErrBox } from "@/components";
 import { useSocket } from "@/providers";
 import { GetAllConversation } from "@/utils/chat.utils";
 import { setAllConversation } from "@/redux/reducers/chat.reducers";
@@ -20,6 +19,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants";
 import { router } from "expo-router";
 import { showToast } from "@/utils";
+import UnAuthErrBox from "@/components/shared/UnAuthErrBox";
 
 const ChatScreen = () => {
   const dispatch = useDispatch();
@@ -31,12 +31,8 @@ const ChatScreen = () => {
   const { socket } = useSocket();
 
   const fetchAllConversations = async () => {
-    if (user?._id) {
-      return;
-    }
     const payload = { userId: user?._id };
     const res = await GetAllConversation(payload);
-    console.log(res);
     if (!res?.success) {
       return showToast(
         "Something went wrong.",
@@ -106,10 +102,10 @@ const ChatScreen = () => {
             </Text>
 
             <TouchableOpacity
-              onPress={() => router.navigate(`/(tabs)/Search/`)}
+              onPress={() => router.navigate(`/(tabs)/Home/`)}
               className="bg-Primary items-center justify-center px-4 shadow-lg shadow-black py-3 rounded-full mt-4"
             >
-              <Text className="text-white font-semibold">Explore Listings</Text>
+              <Text className="text-white font-semibold">Go to Home</Text>
             </TouchableOpacity>
           </Animated.View>
         </View>

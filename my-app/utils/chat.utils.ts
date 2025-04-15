@@ -1,6 +1,6 @@
 import { CreateNewConversationPayload } from "@/types";
 
-const chat_api_url = process.env.EXPO_PUBLIC_CHAT_API! ?? "";
+const chat_api_url = "https://hostliochatapi-x98jy.kinsta.app/api/v1";
 export const CreateNewConversation = async ({
   userId,
   listingId,

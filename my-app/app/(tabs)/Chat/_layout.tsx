@@ -11,9 +11,9 @@ const StackLayout = () => {
           backgroundColor: Colors.Primary,
         },
         headerTintColor: Colors.White,
-      }}>
+      }}
+    >
       <Stack.Screen name="index" options={{ headerTitle: "Conversations" }} />
-      <Stack.Screen name="conversation" />
     </Stack>
   );
 };
